@@ -1,4 +1,10 @@
 var y = [];
+let sound;
+
+function preload() {
+    sound = loadSound("Chime.mp3");
+}
+
 function setup() {
 createCanvas(300, 800);
 colorMode(RGB, 100, 100, 100, 1);
@@ -94,6 +100,12 @@ triangle(mouseX + 10, mouseY + 15, mouseX + 10, mouseY + 30, mouseX + 15, mouseY
 fill(25);
 ellipse(mouseX + 5, mouseY + 5, 5, 5);
 fill(100);
-triangle(mouseX, mouseY + 32, mouseX + 10, mouseY + 32, mouseX + 5, mouseY + 45)
-ellipse(150,40) 
+triangle(mouseX, mouseY + 32, mouseX + 10, mouseY + 32, mouseX + 5, mouseY + 45) 
+}
+
+function mousePressed() {
+    let d = dist(mouseX, mouseY, 230, 265);
+    if(d < 65/2) {
+        sound.play();
+    }
 }
