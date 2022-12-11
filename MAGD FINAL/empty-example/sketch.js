@@ -1,5 +1,6 @@
 var y = [];
 let sound;
+let asteroidsArray = [];
 
 function preload() {
     sound = loadSound("Chime.mp3");
@@ -8,8 +9,12 @@ function preload() {
 function setup() {
 createCanvas(300, 800);
 colorMode(RGB, 100, 100, 100, 1);
-for (var i = 0; i < 3000; i++) {
-    y[i] = random(-1000, 200); 
+for (var i = 0; i < 30; i++) {
+    let x = random(0, 200);
+    let y = 50 - i * 100;
+    asteroidsArray[i] = {
+        x: x, y: y
+    }
 }
 let minDistance = 10;
 button = createButton('Restart');
@@ -103,14 +108,16 @@ ellipse(mouseX + 5, mouseY + 5, 5, 5);
 fill(100);
 triangle(mouseX, mouseY + 32, mouseX + 10, mouseY + 32, mouseX + 5, mouseY + 45) 
 console.log("mouse: " + mouseX + " " + mouseY);
-for (let i = 0; i < Object.keys(asteroidsArray).length; i++)
-let d = dist(asteroidsArray[i].x, asteroidsArray[i].y, mouseX, mouseY);
-if (d < 10) {      
-    array = false
-      button = true
-} else {
-array = true
-button = false
+for (let i = 0; i < Object.keys(asteroidsArray).length; i++){
+    fill(50);
+    ellipse(asteroidsArray[i].x, asteroidsArray[i].y, 10, 10);
+    let d = dist(asteroidsArray[i].x, asteroidsArray[i].y, mouseX, mouseY);
+//if (d < 10) {      
+  //  array = false
+    //  button = true
+//} else {
+//array = true
+//button = false
 }
 }
 
@@ -119,4 +126,7 @@ function mousePressed() {
     if(d < 65/2) {
         sound.play();
     }
+}
+
+function buttonPressed() {
 }
