@@ -120,3 +120,6 @@ function mousePressed() {
         sound.play();
     }
 }
+
+function buttonPressed() {
+}
