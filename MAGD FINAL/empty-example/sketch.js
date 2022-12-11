@@ -11,6 +11,7 @@ colorMode(RGB, 100, 100, 100, 1);
 for (var i = 0; i < 3000; i++) {
     y[i] = random(-1000, 200); 
 }
+let minDistance = 10;
 button = createButton('Restart');
 button.position(125, 750);
 button.mousePressed;
@@ -101,6 +102,16 @@ fill(25);
 ellipse(mouseX + 5, mouseY + 5, 5, 5);
 fill(100);
 triangle(mouseX, mouseY + 32, mouseX + 10, mouseY + 32, mouseX + 5, mouseY + 45) 
+console.log("mouse: " + mouseX + " " + mouseY);
+for (let i = 0; i < Object.keys(asteroidsArray).length; i++)
+let d = dist(asteroidsArray[i].x, asteroidsArray[i].y, mouseX, mouseY);
+if (d < 10) {      
+    array = false
+      button = true
+} else {
+array = true
+button = false
+}
 }
 
 function mousePressed() {
