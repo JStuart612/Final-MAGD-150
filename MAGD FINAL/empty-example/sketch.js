@@ -1,15 +1,20 @@
 var y = [];
-let sound;
+let sound1;
+let sound2;
+let playMode = 'sustain'
+
 let asteroidsArray = [];
 let showbutton = false;
 let asteroidspeed = 4;
 let button;
 
 function preload() {
-  sound = loadSound("sounds/Chime.mp3");
+  sound1 = loadSound("sounds/Chime.mp3");
+  sound2 = loadSound("sounds/Tada.mp3");
 }
 
 function setup() {
+
     createCanvas(300, 800);
     let _button = document.getElementById("button");
     if (_button != null) {
@@ -32,6 +37,7 @@ function setup() {
 
 
 function draw() {
+    colorMode(RGB, 100, 100, 100)
     background(0);
     stroke(200);
     strokeWeight(2);
@@ -102,7 +108,7 @@ function draw() {
     fill(100, 0, 100, 1)
     stroke(40, 0, 60, .3);
     ellipse(230, 265, 65);
-    fill(100, 0, 10, 1);
+    fill(100, 0, 0, 1);
     stroke(20, 0, 0, .5);
     ellipse(150, 100, 80, 80);
     stroke(0, 0, 100, .2);
@@ -132,11 +138,20 @@ function draw() {
     }
     if (showbutton) {
         button.position(125, 750);
+    }  
+}
+function mousePressed() {
+    if (mouseY > 180){
+        sound1.play()
+    }else{
+        sound2.play()
     }
-    
+    let p = dist(mouseX, mouseY, 150, 100);
+    if (p > 80/2){
+        fill(100, 100, 100, 1);
+        textSize(40);
+        text('WINNER!', 0, 0);
+    }else{
+    }
 }
 
-function mousePressed() {
-    sound.play();
-  let d = dist(mouseX, mouseY, 230, 265);
-}
