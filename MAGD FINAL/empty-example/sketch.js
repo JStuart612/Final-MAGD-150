@@ -147,7 +147,7 @@ function mousePressed() {
         sound2.play()
     }
     let p = dist(mouseX, mouseY, 150, 100);
-    if (p > 80/2){
+    if (p < 80/2){
         fill(100, 100, 100, 1);
         textSize(40);
         text('WINNER!', 0, 0);
