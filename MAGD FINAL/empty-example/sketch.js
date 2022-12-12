@@ -122,7 +122,7 @@ function draw() {
     ellipse(mouseX + 5, mouseY + 5, 5, 5);
     fill(100);
     triangle(mouseX, mouseY + 32, mouseX + 10, mouseY + 32, mouseX + 5, mouseY + 45)
-    console.log("mouse: " + mouseX + " " + mouseY);
+    //console.log("mouse: " + mouseX + " " + mouseY);
     for (let i = 0; i < Object.keys(asteroidsArray).length; i++) {
         fill(30);
         ellipse(asteroidsArray[i].x, asteroidsArray[i].y, 15, 15);
@@ -140,17 +140,18 @@ function draw() {
         button.position(125, 750);
     }  
 }
-function mousePressed() {
+
+function mouseClicked() {
     if (mouseY > 180){
         sound1.play()
     }else{
         sound2.play()
     }
-    let p = dist(mouseX, mouseY, 150, 100);
-    if (p < 80/2){
-        fill(100, 100, 100, 1);
+    let p = dist(150, 100, mouseX, mouseY);
+    if (p < 80) {
+        fill(100);
         textSize(40);
-        text('WINNER!', 0, 0);
+        text('WINNER!', 150, 100);
     }else{
     }
 }
